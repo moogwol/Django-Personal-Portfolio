@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}Portfolio Home{% endblock title %}
+
+{% block heading %}My Portfolio{% endblock heading %}
+
+{% block content %}
+
+<div class="container px-4">
+
+
+<img id="headshot" src="{% static 'portfolio/pink.png' %}" class="rounded mx-auto d-block" alt="no image">
+
+
+
+<div class="row">
+  {% for project in projects %}
+    <div class="col-sm-6">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ project.image.url }}" class="card-img-top" alt="no image" style="height: 17rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>  
+          <p class="card-text">{{ project.description }}</p>
+          {% if project.url %}
+          <a href="{{ project.url }}" class="btn btn-primary" >See the project</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+</div> 
+
+{% endblock content %}
+
